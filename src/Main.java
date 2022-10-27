@@ -1,21 +1,22 @@
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+
 public class Main {
 
-        public static void main(String[] args) {
-            List<Task> allTasks = new ArrayList<>();
-            for (int first = 2; first <= 9; first++) {
-                for (int second = first; second <= 9; second++) {
+    public static void main(String[] args) {
+        Set<Task> allTasks = new HashSet<>();
+        for (int first = 2; first <= 9; first++) {
+            for (int second = first; second <= 9; second++) {
+                if (allTasks.size() < 15) {
                     allTasks.add(new Task(first, second));
+                } else {
+                    break;
                 }
             }
-            Collections.shuffle(allTasks);
-            List<Task> chosenPairs = allTasks.subList(0, 15);
-
-            System.out.println();
-            System.out.print(chosenPairs);
-            System.out.println();
         }
+        for (Task task : allTasks) {
+            System.out.println(task.getFirst() + "*" + task.getSecond());
+
+        }
+
     }
+}
